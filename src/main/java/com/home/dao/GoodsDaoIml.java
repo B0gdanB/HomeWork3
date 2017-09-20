@@ -15,7 +15,7 @@ public class GoodsDaoIml implements GoodsDao {
     private JdbcTemplate jdbcTemplate;
 
     public GoodsDaoIml(DataSource dataSource) {
-        this.jdbcTemplate = jdbcTemplate;
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
     @Override
@@ -47,11 +47,13 @@ public class GoodsDaoIml implements GoodsDao {
 
     @Override
     public void delete(int id) {
-
+        String sql = "DELETE FROM user WHERE id=?";
+        jdbcTemplate.update(sql, id);
     }
 
     @Override
     public void delete(String name) {
-
+        String sql = "DELETE FROM user WHERE name=?";
+        jdbcTemplate.update(sql, name);
     }
 }
