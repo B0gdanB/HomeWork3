@@ -16,33 +16,27 @@ public class GoodsController {
     @Autowired
     private GoodsService goodsService;
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
 
     @GetMapping("/goods/{id}")
-    public String getGoods(@PathVariable("id") int id, Model model) {
-        Goods goodsById = goodsService.getById(id);
-        model.addAttribute("goods", goodsById);
-        return "goods";
+    public String getGoodsById(@PathVariable("id") int id, Model model) {
+        model.addAttribute("goods", goodsService.getById(id));
+        return "showGoods";
     }
 
-    @GetMapping("/goods")
-    public String showAllGoods(Model model) {
-        model.addAttribute("goods", goodsService.getAll());
-        return "goodsList.ftl";
-    }
-
-    @GetMapping("/goods")
-    public String addGoods(@RequestParam("name") String name, @RequestParam("merchant") String merchant) {
-        Goods goods = new Goods();
-        goods.setName(name);
-        goods.setMerchant(merchant);
-        goodsService.save(goods);
-        return "redirect:goods";
+    @GetMapping("/allGoods")
+    public String getAllGoods(Model model) {
+        model.addAttribute("allGoods", goodsService.getAll());
+        return "goodsList";
     }
 
     @PostMapping("/newGoods")
-    public String newGoods(@ModelAttribute Goods goods) {
+    public String createGoods(@ModelAttribute Goods goods) {
         goodsService.save(goods);
-        return "redirect:newGoods";
+        return "redirect:allGoods";
     }
 
 }

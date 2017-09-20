@@ -27,13 +27,13 @@ public class GoodsDaoIml implements GoodsDao {
 
     @Override
     public Goods getGoodsById(int id) {
-        String sql = "SELECT * FROM user WHERE id=?";
+        String sql = "SELECT * FROM goods WHERE id=?";
         return jdbcTemplate.queryForObject(sql, new GoodsMapper(), id);
     }
 
     @Override
     public Goods update(Goods newGods) {
-        String sql = "UPDATE user SET name=?, email=?, age=? WHERE id=?";
+        String sql = "UPDATE goods SET name=?, email=?, age=? WHERE id=?";
         int update = jdbcTemplate.update(sql, newGods.getName(), newGods.getPrice(), newGods.getMerchant(), newGods.getId());
         System.out.println("return + " + update);
         return null;
@@ -41,19 +41,19 @@ public class GoodsDaoIml implements GoodsDao {
 
     @Override
     public List<Goods> getAll() {
-        String sql = "SELECT * FROM user";
+        String sql = "SELECT * FROM goods";
         return jdbcTemplate.query(sql, new GoodsMapper());
     }
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM user WHERE id=?";
+        String sql = "DELETE FROM goods WHERE id=?";
         jdbcTemplate.update(sql, id);
     }
 
     @Override
     public void delete(String name) {
-        String sql = "DELETE FROM user WHERE name=?";
+        String sql = "DELETE FROM goods WHERE name=?";
         jdbcTemplate.update(sql, name);
     }
 }

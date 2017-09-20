@@ -22,7 +22,7 @@ public class SpringConfig {
     @Bean
     public GoodsDao getGoodsDaoIml() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUrl("jdbc:mysql://localhost:3306/demo?useSSL=false");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/demo?userSll=false&?createDatabaseIfNotExist=true");
         dataSource.setUsername("root");
         dataSource.setPassword("root");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");

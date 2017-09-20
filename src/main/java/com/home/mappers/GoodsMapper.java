@@ -13,11 +13,11 @@ public class GoodsMapper implements RowMapper<Goods> {
 
     @Override
     public Goods mapRow(ResultSet resultSet, int i) throws SQLException {
-        Goods user = new Goods();
-        user.setId(resultSet.getInt("id"));
-        user.setName(resultSet.getString("name"));
-        user.setPrice(resultSet.getDouble("price"));
-        user.setMerchant(resultSet.getString("merchant"));
-        return user;
+        Goods goods = new Goods();
+        goods.setId(resultSet.getInt("id"));
+        goods.setName(resultSet.getString("name"));
+        goods.setPrice(resultSet.getDouble("price"));
+        goods.setMerchant(resultSet.getString("merchant"));
+        return goods;
     }
 }

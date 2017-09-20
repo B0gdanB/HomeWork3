@@ -32,20 +32,8 @@ public class WebAppConfig extends WebMvcConfigurerAdapter{
     @Bean
     public FreeMarkerConfigurer freemarkerConfig() {
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/templates/");
+        freeMarkerConfigurer.setTemplateLoaderPaths("/", "/WEB-INF/views/", "/WEB-INF/views/templates/");
         return freeMarkerConfigurer;
-    }
-
-
-    @Bean
-    public ViewResolver viewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setViewClass(JstlView.class);
-        viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setSuffix(".html");
-        viewResolver.setOrder(2);
-        return viewResolver;
-
     }
 
     @Override

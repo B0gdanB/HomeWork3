@@ -13,6 +13,6 @@ public interface GoodsService {
 
     List<Goods> getAll();
 
-    void save(Goods user);
+    void save(Goods goods);
 
 }
