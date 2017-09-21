@@ -1,5 +1,6 @@
 package com.home.controller;
 
+import com.home.dao.GoodsDao;
 import com.home.entity.Goods;
 import com.home.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 public class GoodsController {
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private GoodsDao goodsDao;
 
     @GetMapping("/")
     public String index() {
@@ -38,5 +41,16 @@ public class GoodsController {
         goodsService.save(goods);
         return "redirect:allGoods";
     }
+    @RequestMapping("/deleteGoods")
+    public String deleteGoods(@PathVariable ("id") int id) {
+        goodsDao.delete(id);
+        return "redirect:allGoods";
+    }
+
+    /*@RequestMapping(value = "/deleteGoods", method = RequestMethod.DELETE)
+    public String deleteGoods(@PathVariable String name) {
+        goodsDao.delete(name);
+        return "redirect:allGoods";
+    }*/
 
 }

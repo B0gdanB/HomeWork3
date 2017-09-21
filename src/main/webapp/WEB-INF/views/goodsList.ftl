@@ -26,5 +26,6 @@
     </table>
 </div>
 <#include "templates/createGoodsForm.ftl"/>
+<#include "templates/deleteGoodsForm.ftl"/>
 </body>
 </html>
